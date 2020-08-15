@@ -23,7 +23,7 @@ view posts =
             |> List.filterMap
                 (\( path, metadata ) ->
                     case metadata of
-                        Metadata.Page meta ->
+                        Metadata.Page _ ->
                             Nothing
 
                         Metadata.Author _ ->

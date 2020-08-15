@@ -160,7 +160,7 @@ pageView :
     -> { path : PagePath Pages.PathKey, frontmatter : Metadata }
     -> Rendered
     -> { title : String, body : List (Element Msg) }
-pageView model siteMetadata page viewForPage =
+pageView _ siteMetadata page viewForPage =
     case page.frontmatter of
         Metadata.Page metadata ->
             { title = metadata.title

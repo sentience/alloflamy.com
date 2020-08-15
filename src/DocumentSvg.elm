@@ -2,8 +2,8 @@ module DocumentSvg exposing (view)
 
 import Color exposing (Color)
 import Element exposing (Element)
-import Svg exposing (..)
-import Svg.Attributes exposing (..)
+import Svg exposing (Svg, defs, g, line, linearGradient, metadata, stop, svg)
+import Svg.Attributes exposing (d, fill, fillOpacity, height, id, offset, stroke, strokeDasharray, strokeLinecap, strokeLinejoin, strokeOpacity, strokeWidth, version, viewBox, width, x1, x2, y1, y2)
 
 
 strokeColor : String
