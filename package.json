@@ -1,14 +1,14 @@
 {
-  "name": "elm-pages-example",
+  "name": "alloflamy",
   "version": "1.0.0",
-  "description": "Example site built with elm-pages.",
+  "description": "alloflamy.com",
   "scripts": {
     "start": "elm-pages develop",
     "serve": "npm run build && http-server ./dist -a localhost -p 3000 -c-1",
     "build": "elm-pages build"
   },
-  "author": "Dillon Kearns",
-  "license": "BSD-3",
+  "author": "Kevin Yank",
+  "license": "UNLICENSED",
   "dependencies": {
     "elm-pages": "1.4.0",
     "highlight.js": "^9.15.10",
