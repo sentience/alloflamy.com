@@ -74,13 +74,11 @@ header currentPath =
                 , label =
                     Element.row [ Font.size 30, Element.spacing 16 ]
                         [ DocumentSvg.view
-                        , Element.text "elm-pages-starter"
+                        , Element.text "All of LAMY"
                         ]
                 }
             , Element.row [ Element.spacing 15 ]
-                [ elmDocsLink
-                , githubRepoLink
-                , highlightableLink currentPath Pages.pages.blog.directory "Blog"
+                [ highlightableLink currentPath Pages.pages.about "About"
                 ]
             ]
         ]
@@ -88,13 +86,13 @@ header currentPath =
 
 highlightableLink :
     PagePath Pages.PathKey
-    -> Directory Pages.PathKey Directory.WithIndex
+    -> PagePath Pages.PathKey
     -> String
     -> Element msg
-highlightableLink currentPath linkDirectory displayName =
+highlightableLink currentPath linkPath displayName =
     let
         isHighlighted =
-            currentPath |> Directory.includes linkDirectory
+            currentPath == linkPath
     in
     Element.link
         (if isHighlighted then
@@ -105,32 +103,6 @@ highlightableLink currentPath linkDirectory displayName =
          else
             []
         )
-        { url = linkDirectory |> Directory.indexPath |> PagePath.toString
+        { url = linkPath |> PagePath.toString
         , label = Element.text displayName
-        }
-
-
-githubRepoLink : Element msg
-githubRepoLink =
-    Element.newTabLink []
-        { url = "https://github.com/dillonkearns/elm-pages"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.github, description = "Github repo" }
-        }
-
-
-elmDocsLink : Element msg
-elmDocsLink =
-    Element.newTabLink []
-        { url = "https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/"
-        , label =
-            Element.image
-                [ Element.width (Element.px 22)
-                , Font.color Palette.color.primary
-                ]
-                { src = ImagePath.toString Pages.images.elmLogo, description = "Elm Package Docs" }
         }

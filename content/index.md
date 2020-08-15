@@ -1,14 +1,11 @@
 ---
-title: elm-pages-starter - a simple blog starter
+title: All of LAMY
 type: page
 ---
 
-This is an example repo to get you up and running with `elm-pages`.
+This site aims to document a complete history of LAMY fountain pens.
 
-The entrypoint file is `index.js`. That file imports `src/Main.elm`. The `content` folder is turned into your static pages. The rest is mostly determined by logic in the Elm code! Learn more with the resources below.
+_Actual content coming soon!_
 
-## Learn more about `elm-pages`
-
-- Documentation site: https://elm-pages.com
-- [Elm Package docs](https://package.elm-lang.org/packages/dillonkearns/elm-pages/latest/)
-- [`elm-pages` blog](https://elm-pages.com/blog)
+Feel free to contact [Kevin Yank](https://kevinyank.com)
+if you have any questions.
