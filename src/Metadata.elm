@@ -1,6 +1,7 @@
 module Metadata exposing (ArticleMetadata, Metadata(..), PageMetadata, decoder)
 
 import Data.Author
+import Data.Pen
 import Date exposing (Date)
 import Json.Decode as Decode exposing (Decoder)
 import List.Extra
@@ -13,6 +14,8 @@ type Metadata
     | Article ArticleMetadata
     | Author Data.Author.Author
     | BlogIndex
+    | Pen Data.Pen.Pen
+    | PenIndex
 
 
 type alias ArticleMetadata =
@@ -73,6 +76,12 @@ decoder =
                                 |> Decode.map (Maybe.withDefault False)
                             )
                             |> Decode.map Article
+
+                    "pen" ->
+                        Decode.map Pen Data.Pen.decode
+
+                    "pen-index" ->
+                        Decode.succeed PenIndex
 
                     _ ->
                         Decode.fail ("Unexpected page type " ++ pageType)

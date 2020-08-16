@@ -10,7 +10,6 @@ import Html exposing (Html)
 import Metadata exposing (Metadata)
 import Pages
 import Pages.Directory as Directory exposing (Directory)
-import Pages.ImagePath as ImagePath
 import Pages.PagePath as PagePath exposing (PagePath)
 import Palette
 
@@ -78,21 +77,36 @@ header currentPath =
                         ]
                 }
             , Element.row [ Element.spacing 15 ]
-                [ highlightableLink currentPath Pages.pages.about "About"
+                [ highlightableLink currentPath (DirectoryLink Pages.pages.pens.directory) "Pens"
+                , highlightableLink currentPath (PageLink Pages.pages.about) "About"
                 ]
             ]
         ]
 
 
+type Link
+    = DirectoryLink (Directory Pages.PathKey Directory.WithIndex)
+    | PageLink (PagePath Pages.PathKey)
+
+
 highlightableLink :
     PagePath Pages.PathKey
-    -> PagePath Pages.PathKey
+    -> Link
     -> String
     -> Element msg
-highlightableLink currentPath linkPath displayName =
+highlightableLink currentPath link displayName =
     let
-        isHighlighted =
-            currentPath == linkPath
+        ( linkPath, isHighlighted ) =
+            case link of
+                DirectoryLink directory ->
+                    ( Directory.indexPath directory
+                    , Directory.includes directory currentPath
+                    )
+
+                PageLink pagePath ->
+                    ( pagePath
+                    , currentPath == pagePath
+                    )
     in
     Element.link
         (if isHighlighted then
