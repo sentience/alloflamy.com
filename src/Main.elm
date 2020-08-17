@@ -34,12 +34,12 @@ manifest =
     , categories = [ Pages.Manifest.Category.education ]
     , displayMode = Manifest.Standalone
     , orientation = Manifest.Portrait
-    , description = "elm-pages-starter - A statically typed site generator."
+    , description = "An unofficial history of LAMY fountain pens"
     , iarcRatingId = Nothing
-    , name = "elm-pages-starter"
+    , name = "All of LAMY"
     , themeColor = Just Color.white
     , startUrl = pages.index
-    , shortName = Just "elm-pages-starter"
+    , shortName = Just "All of LAMY"
     , sourceIcon = images.iconPng
     }
 
@@ -229,7 +229,7 @@ head metadata =
                 Metadata.Page meta ->
                     Seo.summaryLarge
                         { canonicalUrlOverride = Nothing
-                        , siteName = "elm-pages-starter"
+                        , siteName = "All of LAMY"
                         , image =
                             { url = images.iconPng
                             , alt = "elm-pages logo"
