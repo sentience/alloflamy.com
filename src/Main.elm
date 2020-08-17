@@ -17,6 +17,7 @@ import Markdown.Renderer
 import Metadata exposing (Metadata)
 import MySitemap
 import Page.Article
+import Page.Pen
 import Pages exposing (images, pages)
 import Pages.Manifest as Manifest
 import Pages.Manifest.Category
@@ -24,6 +25,7 @@ import Pages.PagePath exposing (PagePath)
 import Pages.Platform
 import Pages.StaticHttp as StaticHttp
 import Palette
+import PenIndex
 
 
 manifest : Manifest.Config Pages.PathKey
@@ -192,6 +194,16 @@ pageView _ siteMetadata page viewForPage =
                 ]
             }
 
+        Metadata.Pen pen ->
+            Page.Pen.view pen viewForPage
+
+        Metadata.PenIndex ->
+            { title = "LAMY pens"
+            , body =
+                [ Element.column [ Element.padding 20, Element.centerX ] [ PenIndex.view siteMetadata ]
+                ]
+            }
+
 
 commonHeadTags : List (Head.Tag Pages.PathKey)
 commonHeadTags =
@@ -302,6 +314,12 @@ head metadata =
                         , title = "elm-pages blog"
                         }
                         |> Seo.website
+
+                Metadata.Pen _ ->
+                    []
+
+                Metadata.PenIndex ->
+                    []
            )
 
 

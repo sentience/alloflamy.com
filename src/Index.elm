@@ -38,6 +38,12 @@ view posts =
 
                         Metadata.BlogIndex ->
                             Nothing
+
+                        Metadata.Pen _ ->
+                            Nothing
+
+                        Metadata.PenIndex ->
+                            Nothing
                 )
             |> List.sortWith postPublishDateDescending
             |> List.map postSummary
