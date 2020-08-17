@@ -1,6 +1,5 @@
 module Layout exposing (view)
 
-import DocumentSvg
 import Element exposing (Element)
 import Element.Background
 import Element.Border
@@ -10,6 +9,7 @@ import Html exposing (Html)
 import Metadata exposing (Metadata)
 import Pages
 import Pages.Directory as Directory exposing (Directory)
+import Pages.ImagePath as ImagePath
 import Pages.PagePath as PagePath exposing (PagePath)
 import Palette
 
@@ -25,7 +25,7 @@ view document page =
     { title = document.title
     , body =
         Element.column
-            [ Element.width Element.fill ]
+            [ Element.width Element.fill, Element.height Element.fill ]
             [ header page.path
             , Element.column
                 [ Element.padding 30
@@ -35,6 +35,7 @@ view document page =
                 , Element.centerX
                 ]
                 document.body
+            , footer
             ]
             |> Element.layout
                 [ Element.width Element.fill
@@ -71,9 +72,13 @@ header currentPath =
             [ Element.link []
                 { url = "/"
                 , label =
-                    Element.row [ Font.size 30, Element.spacing 16 ]
-                        [ DocumentSvg.view
-                        , Element.text "All of LAMY"
+                    Element.row [ Font.size 30 ]
+                        [ Element.text "All of "
+                        , Element.image
+                            [ Element.width (Element.px 124)
+                            , Element.height (Element.px 28)
+                            ]
+                            { src = ImagePath.toString Pages.images.lamyBrandLogo, description = "Lamy" }
                         ]
                 }
             , Element.row [ Element.spacing 15 ]
@@ -120,3 +125,15 @@ highlightableLink currentPath link displayName =
         { url = linkPath |> PagePath.toString
         , label = Element.text displayName
         }
+
+
+footer : Element msg
+footer =
+    Element.column
+        [ Element.Region.footer
+        , Element.centerX
+        , Element.alignBottom
+        , Element.paddingXY 0 20
+        , Font.size 12
+        ]
+        [ Element.text "LAMY is a trademark of C. Josef Lamy GmbH. This site is not affiliated with or endorsed by LAMY." ]
