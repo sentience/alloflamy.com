@@ -1,3 +1,27 @@
 [build]
   publish = "./dist/"
   command = "export ELM_HOME=\"$NETLIFY_BUILD_BASE/cache/elm\" && npm run build"
+
+[[redirects]]
+  from = "http://ilovelamy.com/*"
+  to = "https://alloflamy.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://ilovelamy.com/*"
+  to = "https://alloflamy.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.ilovelamy.com/*"
+  to = "https://alloflamy.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.ilovelamy.com/*"
+  to = "https://alloflamy.com/:splat"
+  status = 301
+  force = true
