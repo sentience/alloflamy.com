@@ -1,22 +1,17 @@
 module Main exposing (main)
 
 import Color
-import Data.Author as Author
-import Date
 import Element exposing (Element)
-import Element.Font as Font
 import Feed
 import Head
 import Head.Seo as Seo
 import Html exposing (Html)
-import Index
 import Json.Decode
 import Layout
 import Markdown.Parser
 import Markdown.Renderer
 import Metadata exposing (Metadata)
 import MySitemap
-import Page.Article
 import Page.Pen
 import Pages exposing (images, pages)
 import Pages.Manifest as Manifest
@@ -24,7 +19,6 @@ import Pages.Manifest.Category
 import Pages.PagePath exposing (PagePath)
 import Pages.Platform
 import Pages.StaticHttp as StaticHttp
-import Palette
 import PenIndex
 
 
@@ -88,7 +82,7 @@ generateFiles :
 generateFiles siteMetadata =
     StaticHttp.succeed
         [ Feed.fileToGenerate { siteTagline = siteTagline, siteUrl = canonicalSiteUrl } siteMetadata |> Ok
-        , MySitemap.build { siteUrl = canonicalSiteUrl } siteMetadata |> Ok
+        , MySitemap.build canonicalSiteUrl siteMetadata |> Ok
         ]
 
 
@@ -164,38 +158,12 @@ pageView :
     -> { title : String, body : List (Element Msg) }
 pageView _ siteMetadata page viewForPage =
     case page.frontmatter of
-        Metadata.Page metadata ->
-            { title = metadata.title
+        Metadata.Page title ->
+            { title = title
             , body =
                 [ viewForPage
                 ]
-
-            --        |> Element.textColumn
-            --            [ Element.width Element.fill
-            --            ]
             }
-
-        Metadata.Article metadata ->
-            Page.Article.view metadata viewForPage
-
-        Metadata.Author author ->
-            { title = author.name
-            , body =
-                [ Palette.blogHeading author.name
-                , Author.view [] author
-                , Element.paragraph [ Element.centerX, Font.center ] [ viewForPage ]
-                ]
-            }
-
-        Metadata.BlogIndex ->
-            { title = "elm-pages blog"
-            , body =
-                [ Element.column [ Element.padding 20, Element.centerX ] [ Index.view siteMetadata ]
-                ]
-            }
-
-        Metadata.Pen pen ->
-            Page.Pen.view pen viewForPage
 
         Metadata.PenIndex ->
             { title = "LAMY pens"
@@ -203,6 +171,9 @@ pageView _ siteMetadata page viewForPage =
                 [ Element.column [ Element.padding 20, Element.centerX ] [ PenIndex.view siteMetadata ]
                 ]
             }
+
+        Metadata.Pen pen ->
+            Page.Pen.view pen viewForPage
 
 
 commonHeadTags : List (Head.Tag Pages.PathKey)
@@ -226,7 +197,7 @@ head : Metadata -> List (Head.Tag Pages.PathKey)
 head metadata =
     commonHeadTags
         ++ (case metadata of
-                Metadata.Page meta ->
+                Metadata.Page title ->
                     Seo.summaryLarge
                         { canonicalUrlOverride = Nothing
                         , siteName = "All of LAMY"
@@ -238,80 +209,7 @@ head metadata =
                             }
                         , description = siteTagline
                         , locale = Nothing
-                        , title = meta.title
-                        }
-                        |> Seo.website
-
-                Metadata.Article meta ->
-                    Seo.summaryLarge
-                        { canonicalUrlOverride = Nothing
-                        , siteName = "elm-pages starter"
-                        , image =
-                            { url = meta.image
-                            , alt = meta.description
-                            , dimensions = Nothing
-                            , mimeType = Nothing
-                            }
-                        , description = meta.description
-                        , locale = Nothing
-                        , title = meta.title
-                        }
-                        |> Seo.article
-                            { tags = []
-                            , section = Nothing
-                            , publishedTime = Just (Date.toIsoString meta.published)
-                            , modifiedTime = Nothing
-                            , expirationTime = Nothing
-                            }
-
-                Metadata.Author meta ->
-                    let
-                        ( firstName, lastName ) =
-                            case meta.name |> String.split " " of
-                                [ first, last ] ->
-                                    ( first, last )
-
-                                [ first, middle, last ] ->
-                                    ( first ++ " " ++ middle, last )
-
-                                [] ->
-                                    ( "", "" )
-
-                                _ ->
-                                    ( meta.name, "" )
-                    in
-                    Seo.summary
-                        { canonicalUrlOverride = Nothing
-                        , siteName = "elm-pages-starter"
-                        , image =
-                            { url = meta.avatar
-                            , alt = meta.name ++ "'s elm-pages articles."
-                            , dimensions = Nothing
-                            , mimeType = Nothing
-                            }
-                        , description = meta.bio
-                        , locale = Nothing
-                        , title = meta.name ++ "'s elm-pages articles."
-                        }
-                        |> Seo.profile
-                            { firstName = firstName
-                            , lastName = lastName
-                            , username = Nothing
-                            }
-
-                Metadata.BlogIndex ->
-                    Seo.summaryLarge
-                        { canonicalUrlOverride = Nothing
-                        , siteName = "elm-pages"
-                        , image =
-                            { url = images.iconPng
-                            , alt = "elm-pages logo"
-                            , dimensions = Nothing
-                            , mimeType = Nothing
-                            }
-                        , description = siteTagline
-                        , locale = Nothing
-                        , title = "elm-pages blog"
+                        , title = title
                         }
                         |> Seo.website
 

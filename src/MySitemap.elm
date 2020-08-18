@@ -7,8 +7,7 @@ import Sitemap
 
 
 build :
-    { siteUrl : String
-    }
+    String
     ->
         List
             { path : PagePath Pages.PathKey
@@ -19,17 +18,16 @@ build :
         { path : List String
         , content : String
         }
-build config siteMetadata =
+build siteUrl siteMetadata =
     { path = [ "sitemap.xml" ]
     , content =
-        Sitemap.build config
+        Sitemap.build { siteUrl = siteUrl }
             (siteMetadata
                 |> List.filter
                     (\page ->
                         case page.frontmatter of
-                            Article articleData ->
-                                not articleData.draft
-
+                            -- Article articleData ->
+                            --     not articleData.draft
                             _ ->
                                 True
                     )

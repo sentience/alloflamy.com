@@ -11,7 +11,6 @@ import Pages
 import Pages.Directory as Directory exposing (Directory)
 import Pages.ImagePath as ImagePath
 import Pages.PagePath as PagePath exposing (PagePath)
-import Palette
 
 
 view :
@@ -116,7 +115,7 @@ highlightableLink currentPath link displayName =
     Element.link
         (if isHighlighted then
             [ Font.underline
-            , Font.color Palette.color.primary
+            , Font.color (Element.rgb255 5 117 230)
             ]
 
          else
