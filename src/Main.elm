@@ -34,7 +34,7 @@ manifest =
     , categories = [ Pages.Manifest.Category.education ]
     , displayMode = Manifest.Standalone
     , orientation = Manifest.Portrait
-    , description = "An unofficial history of LAMY fountain pens"
+    , description = siteTagline
     , iarcRatingId = Nothing
     , name = "All of LAMY"
     , themeColor = Just Color.white
@@ -325,9 +325,9 @@ head metadata =
 
 canonicalSiteUrl : String
 canonicalSiteUrl =
-    "https://elm-pages-starter.netlify.com"
+    "https://alloflamy.com"
 
 
 siteTagline : String
 siteTagline =
-    "Starter blog for elm-pages"
+    "An unofficial history of LAMY fountain pens"
