@@ -10,7 +10,7 @@
   "author": "Kevin Yank",
   "license": "UNLICENSED",
   "dependencies": {
-    "elm-pages": "^1.4.2",
+    "elm-pages": "^1.4.3",
     "highlight.js": "^9.15.10",
     "node-sass": "^4.14.1"
   },
