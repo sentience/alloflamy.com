@@ -1,6 +1,6 @@
 module Layout exposing (view)
 
-import Css exposing (alignItems, alignSelf, auto, backgroundImage, baseline, before, block, borderBottom3, borderBox, boxSizing, center, color, column, display, displayFlex, flexDirection, fontFamilies, fontSize, height, hex, hsl, inherit, justifyContent, linearGradient2, link, margin, margin2, marginLeft, marginRight, marginTop, maxWidth, none, padding2, paddingBottom, pct, property, px, rgb, solid, spaceBetween, stop, stretch, textAlign, textDecoration, textTransform, toRight, underline, uppercase, visited, width, zero)
+import Css exposing (alignItems, alignSelf, auto, backgroundImage, before, block, borderBottom3, borderBox, boxSizing, center, color, column, display, displayFlex, flexDirection, fontFamilies, fontSize, height, hex, hsl, inherit, justifyContent, linearGradient2, link, margin, marginLeft, marginRight, marginTop, maxWidth, none, padding2, paddingBottom, pct, property, px, solid, spaceBetween, stop, stretch, textAlign, textDecoration, textTransform, toRight, underline, uppercase, visited, width, zero)
 import Css.Global exposing (body, descendants, each, everything, global, html, typeSelector)
 import Html
 import Html.Styled exposing (Html, a, div, img, main_, nav, text, toUnstyled)
