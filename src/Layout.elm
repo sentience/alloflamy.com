@@ -161,19 +161,20 @@ highlightableLink currentPath link displayName =
     a
         [ href (linkPath |> PagePath.toString)
         , css
-            (List.map
-                (\selector ->
-                    selector
-                        (marginLeft (px 15)
-                            :: (if isHighlighted then
-                                    [ textDecoration underline ]
+            -- to override global link style
+            ([ Css.link, Css.visited ]
+                |> List.map
+                    (\selector ->
+                        selector
+                            (marginLeft (px 15)
+                                :: (if isHighlighted then
+                                        [ textDecoration underline ]
 
-                                else
-                                    [ textDecoration none ]
-                               )
-                        )
-                )
-                [ Css.link, Css.visited ]
+                                    else
+                                        [ textDecoration none ]
+                                   )
+                            )
+                    )
             )
         ]
         [ text displayName ]
