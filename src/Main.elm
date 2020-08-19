@@ -1,11 +1,11 @@
 module Main exposing (main)
 
 import Color
-import Element exposing (Element)
 import Feed
 import Head
 import Head.Seo as Seo
-import Html exposing (Html)
+import Html
+import Html.Styled exposing (Html)
 import Json.Decode
 import Layout
 import Markdown.Parser
@@ -38,16 +38,12 @@ manifest =
     }
 
 
-type alias Rendered =
-    Element Msg
-
-
 
 -- the intellij-elm plugin doesn't support type aliases for Programs so we need to use this line
 -- main : Platform.Program Pages.Platform.Flags (Pages.Platform.Model Model Msg Metadata Rendered) (Pages.Platform.Msg Msg Metadata Rendered)
 
 
-main : Pages.Platform.Program Model Msg Metadata Rendered
+main : Pages.Platform.Program Model Msg Metadata (Html Msg)
 main =
     Pages.Platform.init
         { init = \_ -> init
@@ -86,7 +82,7 @@ generateFiles siteMetadata =
         ]
 
 
-markdownDocument : { extension : String, metadata : Json.Decode.Decoder Metadata, body : String -> Result error (Element msg) }
+markdownDocument : { extension : String, metadata : Json.Decode.Decoder Metadata, body : String -> Result error (Html msg) }
 markdownDocument =
     { extension = "md"
     , metadata = Metadata.decoder
@@ -98,9 +94,7 @@ markdownDocument =
                 |> Markdown.Renderer.render Markdown.Renderer.defaultHtmlRenderer
                 |> Result.withDefault [ Html.text "" ]
                 |> Html.div []
-                |> Element.html
-                |> List.singleton
-                |> Element.paragraph [ Element.width Element.fill ]
+                |> Html.Styled.fromUnstyled
                 |> Ok
     }
 
@@ -138,7 +132,7 @@ view :
         }
     ->
         StaticHttp.Request
-            { view : Model -> Rendered -> { title : String, body : Html Msg }
+            { view : Model -> Html Msg -> { title : String, body : Html.Html Msg }
             , head : List (Head.Tag Pages.PathKey)
             }
 view siteMetadata page =
@@ -154,8 +148,8 @@ pageView :
     Model
     -> List ( PagePath Pages.PathKey, Metadata )
     -> { path : PagePath Pages.PathKey, frontmatter : Metadata }
-    -> Rendered
-    -> { title : String, body : List (Element Msg) }
+    -> Html Msg
+    -> { title : String, body : List (Html Msg) }
 pageView _ siteMetadata page viewForPage =
     case page.frontmatter of
         Metadata.Page title ->
@@ -168,7 +162,7 @@ pageView _ siteMetadata page viewForPage =
         Metadata.PenIndex ->
             { title = "LAMY pens"
             , body =
-                [ Element.column [ Element.padding 20, Element.centerX ] [ PenIndex.view siteMetadata ]
+                [ PenIndex.view siteMetadata
                 ]
             }
 

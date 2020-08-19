@@ -20,9 +20,10 @@
             "elm/url": "1.0.0",
             "elm-community/list-extra": "8.2.4",
             "justinmimbs/date": "3.2.1",
-            "mdgriffith/elm-ui": "1.1.8"
+            "rtfeldman/elm-css": "16.0.2"
         },
         "indirect": {
+            "Skinney/murmur3": "2.0.8",
             "billstclair/elm-xml-eeue56": "1.0.1",
             "dmy/elm-imf-date-time": "1.0.1",
             "elm/browser": "1.0.2",

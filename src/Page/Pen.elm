@@ -1,23 +1,15 @@
 module Page.Pen exposing (view)
 
+import Components.Heading as Heading
 import Data.Pen exposing (Pen)
-import Element exposing (Element)
-import Element.Font as Font
-import Element.Region
+import Html.Styled exposing (Html, text)
 
 
-view : Pen -> Element msg -> { title : String, body : List (Element msg) }
+view : Pen -> Html msg -> { title : String, body : List (Html msg) }
 view pen viewForPage =
     { title = pen.name
     , body =
-        [ Element.paragraph
-            [ Font.bold
-            , Font.family [ Font.typeface "Raleway" ]
-            , Element.Region.heading 1
-            , Font.size 36
-            , Font.center
-            ]
-            [ Element.text pen.name ]
+        [ Heading.view [] [ text pen.name ]
         , viewForPage
         ]
     }
