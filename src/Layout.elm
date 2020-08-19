@@ -96,7 +96,7 @@ header currentPath =
             [ css
                 [ displayFlex
                 , justifyContent spaceBetween
-                , alignItems baseline
+                , alignItems center
                 , width (pct 100)
                 , borderBottom3 (px 1) solid (hex "#ADB8AB")
                 , padding2 (px 5) (px 20)
