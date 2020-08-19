@@ -82,11 +82,11 @@ header currentPath =
                 , backgroundImage
                     (linearGradient2 toRight
                         -- Safari Candy Aquamarine
-                        (stop <| hex "#479F9B")
+                        (stop <| hex "#00A29C")
                         -- Safari Candy Mango
-                        (stop <| hex "#ECAC55")
+                        (stop <| hex "#F7AA3F")
                         -- Safari Candy Violet
-                        [ stop <| hex "#454688" ]
+                        [ stop <| hex "#46448D" ]
                     )
                 , property "content" "''"
                 ]
