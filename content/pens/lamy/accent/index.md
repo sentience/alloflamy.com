@@ -1,6 +1,14 @@
 ---
-name: Accent
+name: accent
 type: pen
+designer: Phoenix Design
+year-from: 1998
+fill: international cartridge/converter
+nib:
+  - steel
+  - 14k
 ---
 
-The LAMY Accent is a model of pen.
+# See also
+
+* [Official page](https://www.lamy.com/en/lamy-accent/)
