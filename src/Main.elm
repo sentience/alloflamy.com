@@ -169,6 +169,12 @@ pageView _ siteMetadata page viewForPage =
         Metadata.Pen pen ->
             Page.Pen.view pen viewForPage
 
+        Metadata.Accessory ->
+            { title = "TODO", body = [] }
+
+        Metadata.Model ->
+            { title = "TODO", body = [] }
+
 
 commonHeadTags : List (Head.Tag Pages.PathKey)
 commonHeadTags =
@@ -211,6 +217,12 @@ head metadata =
                     []
 
                 Metadata.PenIndex ->
+                    []
+
+                Metadata.Accessory ->
+                    []
+
+                Metadata.Model ->
                     []
            )
 

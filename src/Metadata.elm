@@ -11,6 +11,8 @@ type Metadata
     = Page PageMetadata
     | PenIndex
     | Pen Data.Pen.Pen
+    | Accessory
+    | Model
 
 
 type alias PageMetadata =
@@ -32,6 +34,12 @@ decoder =
 
                     "pen" ->
                         Decode.map Pen Data.Pen.decode
+
+                    "accessory" ->
+                        Decode.succeed Accessory
+
+                    "model" ->
+                        Decode.succeed Model
 
                     _ ->
                         Decode.fail ("Unexpected page type " ++ pageType)
