@@ -1,5 +1,5 @@
 ---
-name: 10p
+name: 10P
 type: pen
 circa: 1965
 fill: international cartridge/converter
