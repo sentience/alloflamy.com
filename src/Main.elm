@@ -8,8 +8,9 @@ import Html
 import Html.Styled exposing (Html)
 import Json.Decode
 import Layout
+import Markdown.Block as Block
 import Markdown.Parser
-import Markdown.Renderer
+import Markdown.Renderer exposing (Renderer)
 import Metadata exposing (Metadata)
 import MySitemap
 import Page.Pen
@@ -50,7 +51,7 @@ main =
         , view = view
         , update = update
         , subscriptions = subscriptions
-        , documents = [ markdownDocument ]
+        , documents = [ markdownDocument Block.H2 ]
         , manifest = manifest
         , canonicalSiteUrl = canonicalSiteUrl
         , onPageChange = Nothing
@@ -82,8 +83,8 @@ generateFiles siteMetadata =
         ]
 
 
-markdownDocument : { extension : String, metadata : Json.Decode.Decoder Metadata, body : String -> Result error (Html msg) }
-markdownDocument =
+markdownDocument : Block.HeadingLevel -> { extension : String, metadata : Json.Decode.Decoder Metadata, body : String -> Result error (Html msg) }
+markdownDocument minHeadingLevel =
     { extension = "md"
     , metadata = Metadata.decoder
     , body =
@@ -91,11 +92,109 @@ markdownDocument =
             -- Html.div [] [ Markdown.toHtml [] markdownBody ]
             Markdown.Parser.parse markdownBody
                 |> Result.withDefault []
-                |> Markdown.Renderer.render Markdown.Renderer.defaultHtmlRenderer
+                |> Markdown.Renderer.render (Markdown.Renderer.defaultHtmlRenderer |> withMinHeadingLevel minHeadingLevel)
                 |> Result.withDefault [ Html.text "" ]
                 |> Html.div []
                 |> Html.Styled.fromUnstyled
                 |> Ok
+    }
+
+
+withMinHeadingLevel : Block.HeadingLevel -> Renderer (Html.Html msg) -> Renderer (Html.Html msg)
+withMinHeadingLevel minHeadingLevel renderer =
+    { renderer
+        | heading =
+            \{ level, children } ->
+                case minHeadingLevel of
+                    Block.H1 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h1 [] children
+
+                            Block.H2 ->
+                                Html.h2 [] children
+
+                            Block.H3 ->
+                                Html.h3 [] children
+
+                            Block.H4 ->
+                                Html.h4 [] children
+
+                            Block.H5 ->
+                                Html.h5 [] children
+
+                            Block.H6 ->
+                                Html.h6 [] children
+
+                    Block.H2 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h2 [] children
+
+                            Block.H2 ->
+                                Html.h3 [] children
+
+                            Block.H3 ->
+                                Html.h4 [] children
+
+                            Block.H4 ->
+                                Html.h5 [] children
+
+                            Block.H5 ->
+                                Html.h6 [] children
+
+                            _ ->
+                                Html.div [] children
+
+                    Block.H3 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h3 [] children
+
+                            Block.H2 ->
+                                Html.h4 [] children
+
+                            Block.H3 ->
+                                Html.h5 [] children
+
+                            Block.H4 ->
+                                Html.h6 [] children
+
+                            _ ->
+                                Html.div [] children
+
+                    Block.H4 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h4 [] children
+
+                            Block.H2 ->
+                                Html.h5 [] children
+
+                            Block.H3 ->
+                                Html.h6 [] children
+
+                            _ ->
+                                Html.div [] children
+
+                    Block.H5 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h5 [] children
+
+                            Block.H2 ->
+                                Html.h6 [] children
+
+                            _ ->
+                                Html.div [] children
+
+                    Block.H6 ->
+                        case level of
+                            Block.H1 ->
+                                Html.h6 [] children
+
+                            _ ->
+                                Html.div [] children
     }
 
 
