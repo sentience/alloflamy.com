@@ -14,13 +14,13 @@ import Markdown.Renderer exposing (Renderer)
 import Metadata exposing (Metadata)
 import MySitemap
 import Page.Pen
+import Page.PenIndex
 import Pages exposing (images, pages)
 import Pages.Manifest as Manifest
 import Pages.Manifest.Category
 import Pages.PagePath exposing (PagePath)
 import Pages.Platform
 import Pages.StaticHttp as StaticHttp
-import PenIndex
 
 
 manifest : Manifest.Config Pages.PathKey
@@ -261,17 +261,17 @@ pageView _ siteMetadata page viewForPage =
         Metadata.PenIndex ->
             { title = "LAMY pens"
             , body =
-                [ PenIndex.view siteMetadata
+                [ Page.PenIndex.view siteMetadata
                 ]
             }
 
         Metadata.Pen pen ->
-            Page.Pen.view pen viewForPage
+            Page.Pen.view siteMetadata page.path pen viewForPage
 
         Metadata.Accessory ->
             { title = "TODO", body = [] }
 
-        Metadata.Model ->
+        Metadata.Model _ ->
             { title = "TODO", body = [] }
 
 
@@ -321,7 +321,7 @@ head metadata =
                 Metadata.Accessory ->
                     []
 
-                Metadata.Model ->
+                Metadata.Model _ ->
                     []
            )
 

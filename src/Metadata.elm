@@ -1,5 +1,6 @@
 module Metadata exposing (Metadata(..), PageMetadata, decoder)
 
+import Data.Model
 import Data.Pen
 import Json.Decode as Decode exposing (Decoder)
 import List.Extra
@@ -12,7 +13,7 @@ type Metadata
     | PenIndex
     | Pen Data.Pen.Pen
     | Accessory
-    | Model
+    | Model Data.Model.Model
 
 
 type alias PageMetadata =
@@ -39,7 +40,7 @@ decoder =
                         Decode.succeed Accessory
 
                     "model" ->
-                        Decode.succeed Model
+                        Decode.map Model Data.Model.decode
 
                     _ ->
                         Decode.fail ("Unexpected page type " ++ pageType)

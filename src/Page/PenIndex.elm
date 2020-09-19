@@ -1,4 +1,4 @@
-module PenIndex exposing (view)
+module Page.PenIndex exposing (view)
 
 import Css exposing (listStyle, margin, none, padding, zero)
 import Data.Pen exposing (Pen)
