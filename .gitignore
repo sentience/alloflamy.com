@@ -1,6 +1,7 @@
 node_modules/
-elm-stuff/
-dist/
-.cache/
-gen/
+_site/
+_tmp/
 
+# Local Netlify folder
+.netlify
+dump.rdb

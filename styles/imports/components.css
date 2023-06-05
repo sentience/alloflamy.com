@@ -1,0 +1,22 @@
+@layer components {
+  .content {
+    & h1 {
+      @apply text-4xl font-bold mlb-6;
+    }
+
+    & p {
+      @apply mlb-4;
+    }
+
+    & :any-link {
+      @apply underline text-theme-700 decoration-from-font;
+
+      /* @apply rounded ring-offset-white visited:text-theme-900
+      hover:bg-theme-100 hover:text-black focus-visible:bg-theme-100 focus-visible:text-black
+      focus-visible:outline-none focus-visible:ring focus-visible:ring-theme-600 focus-visible:ring-offset-2
+      dark:text-theme-500 dark:ring-offset-gray-900 dark:visited:text-theme-300 dark:hover:bg-theme-900 dark:hover:text-white dark:focus-visible:bg-theme-900 dark:focus-visible:text-white; */
+      /* Fix Safari box-shadow render artifacts: https://bugs.webkit.org/show_bug.cgi?id=250059 */
+      /* @apply focus-visible:outline-8; */
+    }
+  }
+}

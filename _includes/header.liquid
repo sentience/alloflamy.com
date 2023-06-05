@@ -1,0 +1,43 @@
+<nav
+  class="
+    {% #top-of-page color bar %}
+    before:bs-1 before:is-full before:block before:bg-gradient-to-r
+    {% #Safari Candy Aquamarine %}
+    before:from-[#00A29C]
+    {% #Safari Candy Mango %}
+    before:via-[#F7AA3F]
+    {% #Safari Candy Violet %}
+    before:to-[#46448D]
+  "
+>
+  <div class="is-full plb-1 pli-5 border-be flex items-baseline justify-between overflow-hidden">
+    <a href="/" class="me-auto text-3xl"
+      >All of
+      <img
+        src="/assets/images/lamy-brand-logo.svg"
+        width="124"
+        height="28"
+        alt="Lamy"
+        class="inline align-baseline uppercase"
+    ></a>
+    {% # TODO underline current link %}
+    {% assign navPages = collections.all | eleventyNavigation %}
+    {% for entry in navPages %}
+      <a
+        href="{{ entry.url }}"
+        {% assign pageUrlFragment = page.url | slice: 0, entry.url.length %}
+        {% if entry.url == pageUrlFragment %}
+          aria-current="true"
+        {% endif %}
+        class="
+          ms-4
+          {% if entry.url == pageUrlFragment %}
+            after:is-full after:bs-2 -mbe-2 relative after:absolute after:top-full after:block after:bg-black
+          {% endif %}
+        "
+      >
+        {{- entry.title -}}
+      </a>
+    {% endfor %}
+  </div>
+</nav>
