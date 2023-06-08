@@ -1,0 +1,36 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{ title | default: site.name }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link
+    rel="canonical"
+    href="{{ site.url }}{{ page.url | replace:'index.html','' }}"
+  >
+  <link rel="stylesheet" href="/assets/styles/styles.css">
+  {% for stylesheet in stylesheets %}
+    <link rel="stylesheet" media="(prefers-color-scheme: light)" href="{{ stylesheet.light }}">
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{{ stylesheet.dark }}">
+  {% endfor %}
+  {% for script in scripts %}
+    {% if script.src %}
+      <script src="{{ script.src }}"></script>
+    {% endif %}
+    {% if script.inline %}
+      {% raw %}<script>{% endraw %}{{ script.inline }}</script>
+    {% endif %}
+  {% endfor %}
+
+  <!-- browser-specific options -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#dc2626">
+
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="{{ site.name }} content feed"
+    href="/feed.xml"
+  >
+
+  <script defer src="/assets/scripts/nav-menu.js"></script>
+</head>

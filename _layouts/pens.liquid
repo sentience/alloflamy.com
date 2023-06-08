@@ -1,0 +1,15 @@
+---
+layout: default
+eleventyImport:
+  collections:
+    - pen
+---
+{{ content }}
+
+<ul>
+  {% for pen in collections.pen %}
+    <li>
+      <a href="{{ pen.url }}">{{ pen.data.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

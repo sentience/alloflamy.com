@@ -1,0 +1,5 @@
+@layer base {
+  button {
+    @apply cursor-default;
+  }
+}
