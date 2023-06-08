@@ -16,7 +16,9 @@
       <script src="{{ script.src }}"></script>
     {% endif %}
     {% if script.inline %}
-      {% raw %}<script>{% endraw %}{{ script.inline }}</script>
+      {% raw %}<script>{% endraw %}
+      {{- script.inline -}}
+      {% raw %}</script>{% endraw %}
     {% endif %}
   {% endfor %}
 
