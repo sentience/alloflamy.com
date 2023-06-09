@@ -28,6 +28,11 @@ module.exports = {
       },
     },
   },
-  safelist: [],
+  safelist: [
+    // Used in markdown-it-anchor config
+    "heading-anchor",
+    "heading-wrapper",
+    "sr-only",
+  ],
   plugins: [require("tailwindcss-logical")],
 };

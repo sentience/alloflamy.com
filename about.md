@@ -1,9 +1,16 @@
 ---
-title: About
+title: About All of LAMY
+layout: page
 eleventyNavigation:
   key: About
   order: 1
 ---
+
+Hi, I'm [Kevin Yank](https://kevinyank.com/). I am fascinated by the evolving design language of Germany's Lamy brand of writing instruments. I seek to document and preserve its complete product history for posterity, and for the reference of curious collectors like me.
+
+This site is a nearly exhaustive representation of Lamy's design history, from the early Artus pens of the 1950s through to the latest models like the [Dialog cc](/pens/dialog-cc) and [Ideos](/pens/ideos). From the ubiquitous [Safari](/pens/safari) (in over 50 regular and special edition finishes) to the flagship [Imporium](/pens/imporium), with countless rarities and curiosities in between, discover over 100 years of evolution in “Lamy design” here in one place.
+
+## Disclaimer
 
 LAMY is a trademark of C. Josef Lamy GmbH.
 
