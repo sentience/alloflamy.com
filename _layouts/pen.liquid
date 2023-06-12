@@ -9,12 +9,12 @@ layout: default
 
 {{ content }}
 
-<table class="is-full [&_:is(td,th)]:pli-1 relative">
-  <caption class="block-end-full absolute end-full w-fit origin-bottom-right -rotate-90 pe-8 text-start text-2xl font-bold">
+<table class="is-full [&_:is(td,th)]:pli-1 relative -start-1 border-separate border-spacing-0">
+  <caption class="block-start-full absolute end-0 start-[calc(2rem-2px)] bg-neutral-700 ps-1 text-start text-2xl font-thin text-white [writing-mode:vertical-rl]">
     Finishes
   </caption>
   <thead>
-    <tr class="border-be-2 font-bold">
+    <tr class="[&>*]:border-be-2 font-bold text-neutral-700 [&>*]:border-neutral-700">
       <th class="border-e-2 text-start font-extrabold">Year</th>
       <th>Name</th>
       <th>Body</th>
@@ -22,9 +22,9 @@ layout: default
       <th>Nib</th>
     </tr>
   </thead>
-  {% for finish in finishes %}
-    <tbody>
-      <tr class="border-be">
+  <tbody>
+    {% for finish in finishes %}
+      <tr class="[&>*]:border-be [&>*]:border-e-neutral-700 [&>:last-child]:border-e-2">
         <td class="border-e-2">
           {% if finish.years %}
             {% if finish.years.start %}
@@ -37,7 +37,7 @@ layout: default
         <td class="text-center">{{ finish.name }}</td>
         <td class="text-center">
           <div
-            class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border after:block {{ finish.body }} {{ finish.bodyMaterial }}"
+            class="is-8 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border align-middle after:block {{ finish.body }} {{ finish.bodyMaterial }}"
             {% if finish.bodyMaterial == 'material-gloss' %}
               title="gloss finish"
             {% elsif finish.bodyMaterial == 'material-matte' %}
@@ -59,7 +59,7 @@ layout: default
         </td>
         <td class="text-center">
           <div
-            class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border after:block {{ finish.clip }} {{ finish.clipMaterial }}"
+            class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border align-middle after:block {{ finish.clip }} {{ finish.clipMaterial }}"
             {% if finish.clipMaterial == 'material-polished' %}
               title="polished"
             {% endif %}
@@ -75,6 +75,6 @@ layout: default
           {{ finish.nib }}
         </td>
       </tr>
-    </tbody>
-  {% endfor %}
+    {% endfor %}
+  </tbody>
 </table>
