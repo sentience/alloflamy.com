@@ -1,5 +1,5 @@
 @layer utilities {
-  .material-gloss {
+  .material-gloss, .material-polished {
     @apply after:bg-gradient-to-b from-transparent from-5% via-white via-15% to-50%;
   }
 

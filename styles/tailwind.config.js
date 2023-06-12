@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       borderColor: {
-        DEFAULT: "#ADB8AB",
+        DEFAULT: colors.neutral[500],
       },
       colors: {
         // {100: var(--theme-100, colors.red.100), …}

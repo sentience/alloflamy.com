@@ -1,25 +1,31 @@
 ---
 layout: default
 ---
-<h1>{{ title }}</h1>
+<header class="pen">
+  <h1>{{ title }}</h1>
+
+  <p class="text-sm text-neutral-500">{{ designer }}</p>
+</header>
 
 {{ content }}
 
-<table>
-  <caption>
+<table class="is-full [&_:is(td,th)]:pli-1 relative">
+  <caption class="block-end-full absolute end-full w-fit origin-bottom-right -rotate-90 pe-8 text-start text-2xl font-bold">
     Finishes
   </caption>
   <thead>
-    <tr>
-      <th>Years</th>
-      <th>Color</th>
+    <tr class="border-be-2 font-bold">
+      <th class="border-e-2 text-start font-extrabold">Year</th>
       <th>Name</th>
+      <th>Body</th>
+      <th>Clip</th>
+      <th>Nib</th>
     </tr>
   </thead>
   {% for finish in finishes %}
     <tbody>
-      <tr>
-        <td>
+      <tr class="border-be">
+        <td class="border-e-2">
           {% if finish.years %}
             {% if finish.years.start %}
               {{ finish.years.start | default: '?' }} – {{ finish.years.end | default: '?' }}
@@ -28,19 +34,46 @@ layout: default
             ?
           {% endif %}
         </td>
+        <td class="text-center">{{ finish.name }}</td>
         <td class="text-center">
-          <span
-            class="is-4 bs-4 inline-block overflow-hidden rounded-lg border {{ finish.color }} after:is-full after:bs-full after:block {{ finish.material }}"
-            {% if finish.material == 'material-gloss' %}
+          <div
+            class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border after:block {{ finish.body }} {{ finish.bodyMaterial }}"
+            {% if finish.bodyMaterial == 'material-gloss' %}
               title="gloss finish"
-            {% elsif finish.material == 'material-matte' %}
+            {% elsif finish.bodyMaterial == 'material-matte' %}
               title="matte finish"
-            {% elsif finish.material == 'material-satin' %}
+            {% elsif finish.bodyMaterial == 'material-satin' %}
               title="satin finish"
             {% endif %}
-          ></span>
+          >
+            <span class="sr-only">
+              {% if finish.bodyMaterial == 'material-gloss' %}
+                gloss finish
+              {% elsif finish.bodyMaterial == 'material-matte' %}
+                matte finish
+              {% elsif finish.bodyMaterial == 'material-satin' %}
+                satin finish
+              {% endif %}
+            </span>
+          </div>
         </td>
-        <td>{{ finish.name }}</td>
+        <td class="text-center">
+          <div
+            class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border after:block {{ finish.clip }} {{ finish.clipMaterial }}"
+            {% if finish.clipMaterial == 'material-polished' %}
+              title="polished"
+            {% endif %}
+          >
+            <span class="sr-only">
+              {% if finish.clipMaterial == 'material-polished' %}
+                polished
+              {% endif %}
+            </span>
+          </div>
+        </td>
+        <td class="text-center">
+          {{ finish.nib }}
+        </td>
       </tr>
     </tbody>
   {% endfor %}

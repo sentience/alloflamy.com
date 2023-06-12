@@ -1,4 +1,13 @@
 @layer components {
+  header.pen {
+    > h1 {
+      @apply mbe-0;
+
+      + p {
+        @apply mbs-0;
+      }
+    }
+  }
   .content {
     & :is(h1,h2,h3,h4,h5,h6) {
       @apply font-light leading-none tracking-tight mbs-10 mbe-5
