@@ -1,2 +1,9 @@
 @layer utilities {
+  .material-gloss {
+    @apply after:bg-gradient-to-b from-transparent from-5% via-white via-15% to-50%;
+  }
+
+  .material-satin {
+    @apply after:bg-gradient-to-b from-transparent from-50% to-zinc-800/25;
+  }
 }

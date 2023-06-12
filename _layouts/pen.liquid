@@ -4,3 +4,44 @@ layout: default
 <h1>{{ title }}</h1>
 
 {{ content }}
+
+<table>
+  <caption>
+    Finishes
+  </caption>
+  <thead>
+    <tr>
+      <th>Years</th>
+      <th>Color</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  {% for finish in finishes %}
+    <tbody>
+      <tr>
+        <td>
+          {% if finish.years %}
+            {% if finish.years.start %}
+              {{ finish.years.start | default: '?' }} – {{ finish.years.end | default: '?' }}
+            {% endif %}
+          {% else %}
+            ?
+          {% endif %}
+        </td>
+        <td class="text-center">
+          <span
+            class="is-4 bs-4 inline-block overflow-hidden rounded-lg border {{ finish.color }} after:is-full after:bs-full after:block {{ finish.material }}"
+            {% if finish.material == 'material-gloss' %}
+              title="gloss finish"
+            {% elsif finish.material == 'material-matte' %}
+              title="matte finish"
+            {% elsif finish.material == 'material-satin' %}
+              title="satin finish"
+            {% endif %}
+          ></span>
+        </td>
+        <td>{{ finish.name }}</td>
+      </tr>
+    </tbody>
+  {% endfor %}
+</table>

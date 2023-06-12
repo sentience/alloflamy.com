@@ -4,9 +4,10 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./_includes/**/*.{html,liquid}",
-    "./_layouts/**/*.{html,liquid}",
-    "./*.{html,liquid}",
+    "./_includes/**/*.{html,liquid,md}",
+    "./_layouts/**/*.{html,liquid,md}",
+    "./*.{html,liquid,md}",
+    "./pens/*.{html,liquid,md}",
   ],
   theme: {
     extend: {
