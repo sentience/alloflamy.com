@@ -27,6 +27,12 @@ finishes:
     clip: bg-black
     clipMaterial: material-polished
     nib: black steel
+  - name: Matte Black
+    body: bg-black
+    bodyMaterial: material-matte
+    clip: bg-zinc-300
+    clipMaterial: material-polished
+    nib: steel
   - name: Palladium
     body: bg-[#DAD6CF]
     bodyMaterial: material-satin
