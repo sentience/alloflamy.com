@@ -1,5 +1,5 @@
 ---
-title: accent
+name: accent
 designer: Phoenix Design / Andreas Haug
 startYear: 1998
 finishes:
