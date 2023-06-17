@@ -43,54 +43,54 @@ finishes:
       start: 1998
       end: 2005
 accessories:
-  kind: grips
-  variants:
-    - code: DR
-      name: Deepred Wood
-      year: 2015
-    - code: DG
-      name: Driftgreen Metallic
-      year: 2015
-    - code: DB
-      name: Darkblue Linen
-      year: 2015
-    - code: YC
-      name: Yellow Crackle
-      year: 2015
-    - code: LB
-      name: Leatherblack
-      year: 2015
-    - code: BY
-      name: Briarwood
-    - code: KW
-      name: Karelia Wood
-    - code: KB
-      name: Cherry Wood
-    - code: KK
-      name: Black rubber / India rubber
-    - code: EH
-      name: Edelharz / Special resin
-    - name: Green/black resin?
-    - name: Blue/black resin?
-    - code: AP
-      name: Aluminium-Palladium finish with indents
-    - name: Aluminium blue finish with indents
-    - code: PT
-      name: Platinum Coat
-    - code: LD
-      name: Diamond Lacquer
-    - code: AB
-      name: Blue Anodized Aluminium
-    - code: AR
-      name: Red Anodized Aluminium
-    - code: BB
-      name: Pear Wood
-    - name: Red acrylic lacquer
-    - name: Blue acrylic lacquer
-    - code: LO
-      name: Orange acrylic lacquer
-    - code: KL
-      name: Gray strips
+  - kind: grips
+    variants:
+      - code: DR
+        name: Deepred Wood
+        year: 2015
+      - code: DG
+        name: Driftgreen Metallic
+        year: 2015
+      - code: DB
+        name: Darkblue Linen
+        year: 2015
+      - code: YC
+        name: Yellow Crackle
+        year: 2015
+      - code: LB
+        name: Leatherblack
+        year: 2015
+      - code: BY
+        name: Briarwood
+      - code: KW
+        name: Karelia Wood
+      - code: KB
+        name: Cherry Wood
+      - code: KK
+        name: Black rubber / India rubber
+      - code: EH
+        name: Edelharz / Special resin
+      - name: Green & black resin
+      - name: Blue & black resin
+      - code: AP
+        name: Aluminium-Palladium finish with indents
+      - name: Aluminium blue finish with indents
+      - code: PT
+        name: Platinum Coat
+      - code: LD
+        name: Diamond Lacquer
+      - code: AB
+        name: Blue Anodized Aluminium
+      - code: AR
+        name: Red Anodized Aluminium
+      - code: BB
+        name: Pear Wood
+      - name: Red acrylic lacquer
+      - name: Blue acrylic lacquer
+      - code: LO
+        name: Orange acrylic lacquer
+      - code: KL
+        name: Gray strips
 ---
 
 LAMY accent's most distinctive feature is its interchangeable grip section, designed to let you swap grips (and radically change the look of the pen) with your mood.

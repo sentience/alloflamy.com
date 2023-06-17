@@ -29,7 +29,7 @@
       @apply text-xl;
     }
 
-    & p {
+    & > :matches(p, table) {
       @apply mlb-4;
     }
 

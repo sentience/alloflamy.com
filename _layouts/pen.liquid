@@ -12,7 +12,7 @@ layout: default
 {{ content }}
 
 {% if finishes %}
-  <div class="relative -me-1 -ms-[2.25rem] box-content overflow-auto">
+  <div class="mlb-4 relative -me-1 -ms-[2.25rem] box-content overflow-auto">
     <table class="is-full -start-1 border-separate border-spacing-0 whitespace-nowrap">
       <caption
         class="-mbe-8 sticky start-8 z-10 w-min origin-bottom-right -translate-x-full -translate-y-8 -rotate-90 pe-8 text-start text-2xl font-thin text-white"
@@ -31,7 +31,7 @@ layout: default
       <tbody class="[&_td]:pli-1 border-s-red-500">
         {% for finish in finishes %}
           <tr class="[&>*]:border-be [&:last-child>*]:border-be-2 [&>*]:border-neutral-700 [&>:last-child]:border-e-2">
-            <td class="sticky start-0 border-e-2 border-s-[2rem] border-s-neutral-700 bg-white {% unless finish.years %}text-center{% endunless %}">
+            <td class="sticky start-0 border-e-2 border-s-[2rem] border-s-neutral-700 bg-white">
               {% if finish.years %}
                 {% if finish.years.start %}
                   {{ finish.years.start | default: '?' }} – {{ finish.years.end | default: '?' }}
@@ -86,3 +86,33 @@ layout: default
     </table>
   </div>
 {% endif %}
+
+{% for accessory in accessories %}
+  <div class="mlb-4 relative -me-1 -ms-[2.25rem] box-content overflow-auto">
+    <table class="is-full -start-1 border-separate border-spacing-0 whitespace-nowrap">
+      <caption
+        class="-mbe-8 sticky start-8 z-10 w-min origin-bottom-right -translate-x-full -translate-y-8 -rotate-90 pe-8 text-start text-2xl font-thin text-white"
+      >
+        {{ accessory.kind | capitalize }}
+      </caption>
+      <thead>
+        <tr class="[&>*]:border-be-2 text-neutral-700 [&>*]:border-neutral-700">
+          <th class="is-0 sticky start-0 bg-white pe-1 ps-[2.25rem] text-start">Year</th>
+          <th class="pli-1">Name</th>
+          <th class="pli-1">Code</th>
+        </tr>
+      </thead>
+      <tbody class="[&_td]:pli-1 border-s-red-500">
+        {% for variant in accessory.variants %}
+          <tr class="[&>*]:border-be [&:last-child>*]:border-be-2 [&>*]:border-neutral-700 [&>:last-child]:border-e-2">
+            <td class="sticky start-0 border-e-2 border-s-[2rem] border-s-neutral-700 bg-white">
+              {{ variant.year | default: '?' }}
+            </td>
+            <td class="text-center">{{ variant.name }}</td>
+            <td class="text-center">{{ variant.code | default: '?' }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endfor %}
