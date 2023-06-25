@@ -50,27 +50,11 @@ function setUpLiquid(eleventyConfig) {
     eleventyConfig.addFilter(filter, filters[filter])
   );
 
-  // Implement Jekyll's post_url tag
-  // Usage: {% post_url post-filename-without-extension %}
-  eleventyConfig.addLiquidTag("post_url", function (liquidEngine) {
-    return {
-      parse: function (tagToken, remainingTokens) {
-        this.str = tagToken.args; // post-filename-without-extension
-      },
-      render: async function (context) {
-        const postFilenameWithoutExtension = `./_posts/${this.str}`;
-        const posts = context.environments.collections.post;
-        const post = posts.find((p) =>
-          p.inputPath.startsWith(postFilenameWithoutExtension)
-        );
-        if (post === undefined) {
-          throw new Error(`${this.str} not found in posts collection.`);
-        } else {
-          return post.url;
-        }
-      },
-    };
-  });
+  // Import all tags in /lib/tags/index.js
+  const tags = require("./lib/tags");
+  Object.keys(tags).forEach((tag) =>
+    eleventyConfig.addLiquidTag(tag, tags[tag])
+  );
 }
 
 function setUpMarkdown(eleventyConfig) {
@@ -100,6 +84,7 @@ function setUpMarkdown(eleventyConfig) {
       wrapper: ['<div class="heading-wrapper">', "</div>"],
     }),
   });
+  markdownIt.use(require("markdown-it-footnote"));
   eleventyConfig.setLibrary("md", markdownIt);
 }
 
@@ -108,7 +93,20 @@ function setUpNavigation(eleventyConfig) {
 }
 
 function setUpCollections(eleventyConfig) {
+  addSortedPensCollection(eleventyConfig);
   addPaginatedTagsCollection(eleventyConfig);
+}
+
+function addSortedPensCollection(eleventyConfig) {
+  eleventyConfig.addCollection("pen", (collections) => {
+    return collections.getFilteredByGlob("pens/**/*.md").sort((a, b) => {
+      const nameA = (a.data.name ?? a.fileSlug).toString().toUpperCase();
+      const nameB = (b.data.name ?? b.fileSlug).toString().toUpperCase();
+      if (nameA > nameB) return 1;
+      if (nameA < nameB) return -1;
+      return 0;
+    });
+  });
 }
 
 function addFilteredCollection(eleventyConfig, tag) {

@@ -1,10 +1,10 @@
 ---
 eleventyComputed:
-  title: "Lamy {{ name }}"
+  title: "Lamy {{ name | default: page.fileSlug }}"
 layout: default
 ---
 <header class="pen">
-  <h1>Lamy {{ name }}</h1>
+  <h1>Lamy {{ name | default: page.fileSlug }}</h1>
 
   <p class="text-sm text-neutral-500">{{ designer }}</p>
 </header>
@@ -25,7 +25,18 @@ layout: default
           <th class="pli-1">Name</th>
           <th class="pli-1">Body</th>
           <th class="pli-1">Clip</th>
-          <th class="pli-1">Nib</th>
+          {% assign finishesWithNib = finishes | where: 'nib' %}
+          {% if finishesWithNib.size > 0 %}
+            <th class="pli-1">Nib</th>
+          {% endif %}
+          {% assign finishesWithEdition = finishes | where: 'edition' %}
+          {% if finishesWithEdition.size > 0 %}
+            <th class="pli-1 text-start">Edition</th>
+          {% endif %}
+          {% assign finishesWithNote = finishes | where: 'note' %}
+          {% if finishesWithNote.size > 0 %}
+            <th class="pli-1 text-start">Note</th>
+          {% endif %}
         </tr>
       </thead>
       <tbody class="[&_td]:pli-1 border-s-red-500">
@@ -36,6 +47,8 @@ layout: default
                 {% if finish.years.start %}
                   {{ finish.years.start | default: '?' }} – {{ finish.years.end | default: '?' }}
                 {% endif %}
+              {% elsif finish.year %}
+                {{ finish.year }}
               {% else %}
                 ?
               {% endif %}
@@ -77,9 +90,21 @@ layout: default
                 </span>
               </div>
             </td>
-            <td class="text-center">
-              {{ finish.nib }}
-            </td>
+            {% if finishesWithNib.size > 0 %}
+              <td class="text-center">
+                {{ finish.nib }}
+              </td>
+            {% endif %}
+            {% if finishesWithEdition.size > 0 %}
+              <td>
+                {{ finish.edition | thousands }}
+              </td>
+            {% endif %}
+            {% if finishesWithNote.size > 0 %}
+              <td>
+                {{ finish.note }}
+              </td>
+            {% endif %}
           </tr>
         {% endfor %}
       </tbody>

@@ -77,4 +77,23 @@
       @apply bg-transparent text-theme-700 opacity-100 dark:text-theme-500;
     }
   }
+
+  .footnotes {
+    @apply text-sm;
+  }
+  .footnotes-sep {
+    @apply mbs-4;
+  }
+
+  .footnotes-list {
+    @apply list-decimal list-inside;
+
+    & > li::marker {
+      @apply align-super;
+    }
+
+    & > li > :first-child {
+      @apply contents;
+    }
+  }
 }

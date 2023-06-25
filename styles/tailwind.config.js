@@ -34,6 +34,10 @@ module.exports = {
     "heading-anchor",
     "heading-wrapper",
     "sr-only",
+    // Used by markdown-it-footnotes
+    "footnotes",
+    "footnotes-list",
+    "footnotes-sep",
     // used by LAMY filter
     "uppercase",
   ],
