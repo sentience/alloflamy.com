@@ -1,5 +1,5 @@
 ---
-title: LAMY Pens
+title: Lamy Pens
 layout: pens
 eleventyNavigation:
   key: Pens

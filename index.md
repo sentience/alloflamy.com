@@ -1,5 +1,5 @@
 ---
-title: All of LAMY
+title: All of Lamy
 permalink: "/"
 ---
 

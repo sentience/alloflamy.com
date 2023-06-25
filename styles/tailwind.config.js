@@ -34,6 +34,8 @@ module.exports = {
     "heading-anchor",
     "heading-wrapper",
     "sr-only",
+    // used by LAMY filter
+    "uppercase",
   ],
   plugins: [require("tailwindcss-logical")],
 };

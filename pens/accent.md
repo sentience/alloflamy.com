@@ -93,12 +93,12 @@ accessories:
         name: Gray strips
 ---
 
-LAMY accent's most distinctive feature is its interchangeable grip section, designed to let you swap grips (and radically change the look of the pen) with your mood.
+Lamy accent's most distinctive feature is its interchangeable grip section, designed to let you swap grips (and radically change the look of the pen) with your mood.
 
-Like many LAMY pens that appear cylindrical at first glance, accent is slightly tapered down the length of its body. It features a relatively small twist cap that posts with a spring-loaded posting mechanism, the look of which was replicated in 2021 with LAMY ideos, but with a softer, more pleasing click here in its original form.
+Like many Lamy pens that appear cylindrical at first glance, accent is slightly tapered down the length of its body. It features a relatively small twist cap that posts with a spring-loaded posting mechanism, the look of which was replicated in 2021 with Lamy ideos, but with a softer, more pleasing click here in its original form.
 
 The way the pen opens to expose its cartridge or converter is unique: the grip section (whichever one you choose) twists with the nib section and cap, but remains attached to the body even as the nib section unscrews smoothly away from it. Once the nib section is removed, the grip section spins freely, but remains attached solidly to the body until you pull to snap it off like a typical snap cap.
 
-The metal clip has a weight and satisfying tilt mechanism very similar to the iconic clip of LAMY 2000, but with a curved mirror finish that softens the pen's otherwise very straight lines.
+The metal clip has a weight and satisfying tilt mechanism very similar to the iconic clip of Lamy 2000, but with a curved mirror finish that softens the pen's otherwise very straight lines.
 
 accent was originally available in a slightly gold-tinted Palladium finish from 1998 through 2005, with a matte black finish available as a premium option with one or more exclusive grips sometime during this same period. In 2015, accent was resurrected in a glossy aluminium finish and a new set of grip sections, both included and available separately. In 2019, this was joined by Brilliant Lacquer, a glossy black finish offered with a 14kt gold nib and, once again, exclusive premium grip sections.

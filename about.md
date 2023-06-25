@@ -1,5 +1,5 @@
 ---
-title: About All of LAMY
+title: About All of Lamy
 layout: page
 eleventyNavigation:
   key: About
@@ -12,10 +12,10 @@ This site is a nearly exhaustive representation of Lamy's design history, from t
 
 ## Disclaimer
 
-LAMY is a trademark of C. Josef Lamy GmbH.
+Lamy is a trademark of C. Josef Lamy GmbH.
 
-This site is not affiliated with or endorsed by LAMY in any way.
+This site is not affiliated with or endorsed by Lamy in any way.
 It’s a labour of love from a fan.
 
-For official news and information about LAMY and its products,
+For official news and information about Lamy and its products,
 visit the [official LAMY website](https://www.lamy.com/).
