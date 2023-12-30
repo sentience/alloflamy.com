@@ -59,18 +59,8 @@ function setUpLiquid(eleventyConfig) {
 
 function setUpMarkdown(eleventyConfig) {
   const anchor = require("markdown-it-anchor");
-  const hljs = require("highlight.js");
 
   let markdownIt = require("markdown-it")({
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return hljs.highlight(str, { language: lang }).value;
-        } catch (__) {}
-      }
-
-      return ""; // use external default escaping
-    },
     html: true,
     typographer: true,
   });
