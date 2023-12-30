@@ -1,23 +1,29 @@
-[[redirects]]
-  from = "http://ilovelamy.com/*"
-  to = "https://alloflamy.com/:splat"
-  status = 301
-  force = true
+[dev]
+command = "npm start"
+targetPort = 8081
+port = 8888
+publish = "dist"
 
 [[redirects]]
-  from = "https://ilovelamy.com/*"
-  to = "https://alloflamy.com/:splat"
-  status = 301
-  force = true
+from = "http://ilovelamy.com/*"
+to = "https://alloflamy.com/:splat"
+status = 301
+force = true
 
 [[redirects]]
-  from = "http://www.ilovelamy.com/*"
-  to = "https://alloflamy.com/:splat"
-  status = 301
-  force = true
+from = "https://ilovelamy.com/*"
+to = "https://alloflamy.com/:splat"
+status = 301
+force = true
 
 [[redirects]]
-  from = "https://www.ilovelamy.com/*"
-  to = "https://alloflamy.com/:splat"
-  status = 301
-  force = true
+from = "http://www.ilovelamy.com/*"
+to = "https://alloflamy.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.ilovelamy.com/*"
+to = "https://alloflamy.com/:splat"
+status = 301
+force = true
