@@ -116,14 +116,18 @@ layout: default
   <div class="mlb-4 relative -me-1 -ms-[2.25rem] box-content overflow-auto">
     <table class="is-full -start-1 border-separate border-spacing-0 whitespace-nowrap">
       <caption
-        class="-mbe-8 sticky start-8 z-10 w-min origin-bottom-right -translate-x-full -translate-y-8 -rotate-90 pe-8 text-start text-2xl font-thin text-white"
+      class="-mbe-8 sticky start-8 z-10 w-min origin-bottom-right -translate-x-full -translate-y-8 -rotate-90 pe-8 text-start text-2xl font-thin text-white"
       >
-        {{ accessory.kind | capitalize }}
+      {{ accessory.kind | capitalize }}
       </caption>
       <thead>
         <tr class="[&>*]:border-be-2 text-neutral-700 [&>*]:border-neutral-700">
           <th class="is-0 sticky start-0 bg-white pe-1 ps-[2.25rem] text-start">Year</th>
           <th class="pli-1">Name</th>
+          {% assign variantsWithColor = accessory.variants | where: 'color' %}
+          {% if variantsWithColor.size > 0 %}
+            <th class="pli-1">Color</th>
+          {% endif %}
           <th class="pli-1">Code</th>
         </tr>
       </thead>
@@ -134,6 +138,24 @@ layout: default
               {{ variant.year | default: '?' }}
             </td>
             <td class="text-center">{{ variant.name }}</td>
+            {% if variantsWithColor.size > 0 %}
+              <td class="text-center">
+                {% if variant.color %}
+                <div
+                  class="is-4 bs-4 after:is-full after:bs-full inline-block overflow-hidden rounded-lg border align-middle after:block {{ variant.color }} {{ variant.material }}"
+                  {% if variant.material == 'material-polished' %}
+                    title="polished"
+                  {% endif %}
+                >
+                  <span class="sr-only">
+                    {% if variant.material == 'material-polished' %}
+                      polished
+                    {% endif %}
+                  </span>
+                </div>
+                {% endif %}
+              </td>
+            {% endif %}
             <td class="text-center">{{ variant.code | default: '?' }}</td>
           </tr>
         {% endfor %}
