@@ -37,6 +37,6 @@
     "tailwindcss-logical": "^3.0.1"
   },
   "dependencies": {
-    "netlify-cli": "^17.10.2"
+    "netlify-cli": "^17.21.1"
   }
 }
